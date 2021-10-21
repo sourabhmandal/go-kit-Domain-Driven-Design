@@ -12,11 +12,9 @@ import (
 )
 
 type StringControllers struct {
-	UppercaseHandler 				*httptransport.Server
-	CountHandler 						*httptransport.Server
+	UppercaseHandler *httptransport.Server
+	CountHandler     *httptransport.Server
 }
-
-
 
 // referenced in api package to access
 // these HTTP implements
@@ -27,34 +25,31 @@ func StrconvController(svc StringService) StringControllers {
 	uppercase = makeUppercaseEndpoint(svc)
 	uppercase = loggingMiddleware(
 		log.With(logger, "method", "uppercase"),
-		)(uppercase)
+	)(uppercase)
 
 	var count endpoint.Endpoint
 	count = makeCountEndpoint(svc)
 	count = loggingMiddleware(
 		log.With(logger, "method", "count"),
-		)(count)
-
+	)(count)
 
 	uppercaseHandler := httptransport.NewServer(
 		uppercase,
 		decodeUppercaseRequest,
 		encodeResponse,
 	)
-	
+
 	countHandler := httptransport.NewServer(
 		count,
 		decodeCountRequest,
 		encodeResponse,
 	)
-	
+
 	return StringControllers{
 		UppercaseHandler: uppercaseHandler,
-		CountHandler : countHandler,
+		CountHandler:     countHandler,
 	}
 }
-
-
 
 // encoder decoder functions for
 // the controller to parse json

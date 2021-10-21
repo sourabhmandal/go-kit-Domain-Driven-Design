@@ -9,15 +9,15 @@ import (
 	httptransport "github.com/go-kit/kit/transport/http"
 )
 
-
 var (
-	ErrNoUserID = errors.New("UserID Not Provided")
+	ErrNoUserID  = errors.New("UserID Not Provided")
 	ErrBadUserID = errors.New("UserID is not of UUID type")
 )
+
 type sessioncontrollers struct {
-	HandleCreateSession 				*httptransport.Server
-	HandleGetSessionDetails 		*httptransport.Server
-	HandleVerifySession         *httptransport.Server
+	HandleCreateSession     *httptransport.Server
+	HandleGetSessionDetails *httptransport.Server
+	HandleVerifySession     *httptransport.Server
 }
 
 // exported, http implementation of endpoints
@@ -36,7 +36,6 @@ func NewSessionController(svc SessionService, ctx context.Context) sessioncontro
 		),
 	}
 }
-
 
 func decodeRequest(_ context.Context, r *http.Request) (interface{}, error) {
 	var request Session

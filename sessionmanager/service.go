@@ -41,22 +41,21 @@ func (s SessionService) CreateSession(ctx context.Context, userID string) (strin
 
 	if err := s.repository.createSession(ctx, session); err != nil {
 		log.Println(err)
-		return "Failed" , err
+		return "Failed", err
 	}
 
 	return "Success", nil
 }
 
-
 func (s SessionService) IsActiveSession(ctx context.Context, userID string) (bool, error) {
 	isActive, err := s.repository.isActiveSession(ctx, userID)
 	if err != nil {
-		return isActive, err 
+		return isActive, err
 	}
 	return isActive, nil
 }
 
-func (s SessionService)	GetSessionDetail(ctx context.Context, userID string) (*Session, error) {
+func (s SessionService) GetSessionDetail(ctx context.Context, userID string) (*Session, error) {
 	// TODO : Implement get session
-	return &Session{}, nil	
+	return &Session{}, nil
 }

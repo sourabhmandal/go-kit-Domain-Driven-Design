@@ -16,7 +16,7 @@ type IStringService interface {
 // StringService implements IStringService
 type StringService struct{}
 
-// core logic for converting normal string 
+// core logic for converting normal string
 // to uppercase sting
 func (StringService) Uppercase(s string) (string, error) {
 	if s == "" {

@@ -19,19 +19,18 @@ type SessionRepository interface {
 	isActiveSession(ctx context.Context, userID string) (bool, error)
 }
 
-
 /*
  * class sessionRepository implements SessionRepository
-*/
+ */
 type sessionrepository struct {
 	// local variables
 	// db helps make database operations
-	db *gorm.DB;
+	db *gorm.DB
 }
 
 func NewRepo(db *gorm.DB) sessionrepository {
 	return sessionrepository{
-		db : db,
+		db: db,
 	}
 }
 
@@ -44,7 +43,7 @@ func (r sessionrepository) createSession(ctx context.Context, session Session) e
 	return nil
 }
 
-func (r sessionrepository)	isActiveSession(ctx context.Context, userID string) (bool, error) {
+func (r sessionrepository) isActiveSession(ctx context.Context, userID string) (bool, error) {
 	if userID == "" {
 		return false, errors.New("User ID field in sessions cannot be empty")
 	}
