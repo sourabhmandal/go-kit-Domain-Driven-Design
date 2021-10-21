@@ -7,5 +7,5 @@ The above code is organized in following packages
 - `/strconv` - single module that handle single responsibility i.e transform string [Follow the tutorial here](https://gokit.io/examples/stringsvc.html)
 
 
-Middlewares - 
+### Middlewares
 This project has one logging middleware in `strconv/logger.go` to demonstrate how we can modularly implement other middlewares such as *rate limiters*, *proxy*, etc.
